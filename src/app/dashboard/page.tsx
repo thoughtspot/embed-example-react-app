@@ -19,6 +19,8 @@ export default function DashboardList() {
     const [selectedTag, setSelectedTag] = useState('');
     const [tags, setTags] = useState([]);
     const [authorName, setAuthorName] = useState('');
+    const [searchPattern, setSearchPattern] = useState(''); // Main state for search
+    const [tempSearch, setTempSearch] = useState(''); // Temporary state for the input box
 
     const api = new ThoughtSpotRestApi(config);
 
@@ -37,6 +39,12 @@ export default function DashboardList() {
         const tagResults = await api.searchTags({});
         setTags(tagResults.map((item) => item.name));
     }
+
+    // Update main search pattern state
+    const handleSearchUpdate = () => {
+        console.log('setting search pattern to ' + tempSearch);
+        setSearchPattern(tempSearch);
+    };
 
     useEffect(() => {
         fetchUserName().then();
@@ -58,6 +66,9 @@ export default function DashboardList() {
         if (selectedTag) {
             metadataOptions['tag_identifiers'] = [selectedTag];
         }
+        if (searchPattern) {
+            metadataOptions['metadata'][0]['name_pattern'] = searchPattern;
+        }
 
         const fetchFilteredData = async () => {
             try {
@@ -70,12 +81,12 @@ export default function DashboardList() {
         };
 
         fetchFilteredData().then(); // Call the async function
-    }, [showMyItems, selectedTag]);
+    }, [showMyItems, selectedTag, searchPattern]);
 
     return (
         <div className="max-w-4xl mx-auto mt-4">
             <div className="mb-4 flex items-center gap-4">
-                {/* Checkbox */}
+                {/* Checkbox for my items. */}
                 <label className="flex items-center gap-2">
                     <input
                         type="checkbox"
@@ -86,7 +97,7 @@ export default function DashboardList() {
                     <span className="text-gray-700">Show my items</span>
                 </label>
 
-                {/* Dropdown */}
+                {/* Dropdown for tags */}
                 <select
                     className="border border-gray-300 rounded px-2 py-1 text-gray-700"
                     value={selectedTag}
@@ -101,9 +112,28 @@ export default function DashboardList() {
                 </select>
             </div>
 
+            {/* Name pattern. */}
+            <div className="flex items-center gap-2">
+                <label htmlFor="search-pattern" className="text-gray-700">
+                    Name pattern:
+                </label>
+                <input
+                    id="search-pattern"
+                    type="text"
+                    className="border border-gray-300 rounded px-2 py-1 text-gray-700 w-1/2"
+                    placeholder="Enter a filter for the dashboard name"
+                    value={tempSearch}
+                    onChange={(e) => setTempSearch(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') handleSearchUpdate(); // Update on Enter
+                    }}
+                    onBlur={handleSearchUpdate} // Update on Blur
+                />
+            </div>
+
             {metadataData && metadataData.length > 0 ? (
 
-                <div className="h-[75vh] overflow-auto border border-gray-200 rounded-lg">
+                <div className="h-[70vh] overflow-auto border border-gray-200 rounded-lg">
                     <table className="table-fixed border-collapse border border-gray-200 w-full">
                         <thead>
                         <tr className="bg-gray-100">
