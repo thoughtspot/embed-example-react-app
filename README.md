@@ -1,2 +1,2 @@
 # embed-example-react-app
-working on an example for Verizon
+Example of embedding ThoughtSpot content into a React app.
