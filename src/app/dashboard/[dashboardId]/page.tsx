@@ -34,7 +34,7 @@ const Dashboard = ({ params }: Props) => {
         showLiveboardDescription={true}
         visibleActions={[]}
       />
-    )) || <div>Provide a dashboardID</div>
+    )) || <div>No dashboard ID set.</div>
   );
 };
 
