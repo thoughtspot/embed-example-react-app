@@ -22,14 +22,8 @@ export function TopNavBar(props: NavBarProps) {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Navbar.Link className={styles.navlink} href="/host-event">
-          Events
-        </Navbar.Link>
-        <Navbar.Link className={styles.navlink} href="/custom-action">
-          Custom Actions
-        </Navbar.Link>
-        <Navbar.Link className={styles.navlink} href="/get-data">
-          Data API
+        <Navbar.Link className={styles.navlink} href="/dashboard">
+          Dashboards
         </Navbar.Link>
         <Dropdown
           arrowIcon={true}

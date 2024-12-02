@@ -1,13 +1,13 @@
+// TODO -  Get the username and password from the user (optional)
 export const constants = {
-    tsURL: "https://training.thoughtspot.cloud",
-    tokenServer: "https://tse-auth-token-server-example.vercel.app",
-    passcode: "PASSCODE",  // Lesson 1.1 - change the passcode to match the code for the token server.
-    username: "userxxx",   // Lesson 1.1 - change the username to match your username.
+  tsURL: "https://embed-1-do-not-delete.thoughtspotstaging.cloud",
+  username: "",
+  password: "",
 };
 
 // CSS files to choose from.  These are pointing to files hosted on GitHub via jsDelivr.
 export const cssFiles = {
-    default:
-        "https://cdn.jsdelivr.net/gh/thoughtspot/tse-advanced-tutorial/css/default.css",
-    dark: "https://cdn.jsdelivr.net/gh/thoughtspot/tse-advanced-tutorial/css/dark.css",
+  default:
+    "https://cdn.jsdelivr.net/gh/thoughtspot/tse-advanced-tutorial/css/default.css",
+  dark: "https://cdn.jsdelivr.net/gh/thoughtspot/tse-advanced-tutorial/css/dark.css",
 };
