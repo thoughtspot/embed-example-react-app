@@ -4,7 +4,6 @@ import "./globals.css";
 
 import {TopNavBar} from "@/components/TopNavBar";
 import {TSFooter} from "@/components/TSFooter";
-import {StyleProvider, StyleContext} from "../contexts/StyleContext";
 
 import ThoughtSpotEmbed from "@/components/ThoughtSpotEmbed";
 
@@ -23,19 +22,13 @@ export default function RootLayout({
             <link rel="icon" href="/images/ts.png" type="images/png"/>
         </head>
         <body>
-        <StyleProvider>
-            <StyleContext.Consumer>
-                {(style) => (
-                    <>
-                        <TopNavBar/>
-                        <ThoughtSpotEmbed key={style.style.toString()}>
-                            <div className="embeddedContent">{children}</div>
-                        </ThoughtSpotEmbed>
-                        <TSFooter/>
-                    </>
-                )}
-            </StyleContext.Consumer>
-        </StyleProvider>
+        <>
+            <TopNavBar/>
+            <ThoughtSpotEmbed>
+                <div className="embeddedContent">{children}</div>
+            </ThoughtSpotEmbed>
+            <TSFooter/>
+        </>
         </body>
         </html>
     );

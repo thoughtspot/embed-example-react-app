@@ -11,27 +11,18 @@ import {constants} from "@/lib/constants";
 const config = createConfiguration({
     baseServer: new ServerConfiguration(constants.tsURL, {}),
 });
+
 export default function WorksheetList() {
     const [metadataData, setMetadataData] = useState<object | null>();
-    const [showMyItems, setShowMyItems] = useState(false);
     const [selectedTag, setSelectedTag] = useState('');
     const [tags, setTags] = useState([]);
-    const [authorName, setAuthorName] = useState('');
-    const [searchPattern, setSearchPattern] = useState(''); // Main state for search
-    const [tempSearch, setTempSearch] = useState(''); // Temporary state for the input box
 
     const api = new ThoughtSpotRestApi(config);
 
-    const fetchMetadata = async (metadataOptions) => {
+    const fetchWorksheets = async (metadataOptions) => {
         const allTables = await api.searchMetadata(metadataOptions);
         console.log(allTables);
         return allTables.filter((m) => m['metadata_header']['type'] === 'WORKSHEET');
-    }
-
-    const fetchUserName = async () => {
-        const userInfo = await api.getCurrentUserInfo();
-        console.log('user === ' + userInfo.name);
-        setAuthorName(userInfo.name);
     }
 
     const fetchTags = async () => {
@@ -40,14 +31,7 @@ export default function WorksheetList() {
         setTags(tagResults.map((item) => item.name));
     }
 
-    // Update main search pattern state
-    const handleSearchUpdate = () => {
-        console.log('setting search pattern to ' + tempSearch);
-        setSearchPattern(tempSearch);
-    };
-
     useEffect(() => {
-        fetchUserName().then();
         fetchTags().then();
 
         const metadataOptions = {
@@ -60,19 +44,13 @@ export default function WorksheetList() {
             ]
         }
 
-        if (showMyItems) {
-            metadataOptions['created_by_user_identifiers'] = [authorName];
-        }
         if (selectedTag) {
             metadataOptions['tag_identifiers'] = [selectedTag];
-        }
-        if (searchPattern) {
-            metadataOptions['metadata'][0]['name_pattern'] = searchPattern;
         }
 
         const fetchFilteredData = async () => {
             try {
-                const filteredMetadata = await fetchMetadata(metadataOptions);
+                const filteredMetadata = await fetchWorksheets(metadataOptions);
                 console.log(filteredMetadata);
                 setMetadataData(filteredMetadata);
             } catch (error) {
@@ -81,22 +59,12 @@ export default function WorksheetList() {
         };
 
         fetchFilteredData().then(); // Call the async function
-    }, [showMyItems, selectedTag, searchPattern]);
+    }, [selectedTag]);
 
     return (
         <div className="max-w-4xl mx-auto mt-4">
             <p className="font-bold flex items-center mb-4">Please select a worksheet to search</p>
             <div className="mb-4 flex items-center gap-4">
-                {/* Checkbox for my items. */}
-                <label className="flex items-center gap-2">
-                    <input
-                        type="checkbox"
-                        className="h-4 w-4 text-blue-600 border-gray-300 rounded"
-                        checked={showMyItems}
-                        onChange={(e) => setShowMyItems(e.target.checked)}
-                    />
-                    <span className="text-gray-700">Show my items</span>
-                </label>
 
                 {/* Dropdown for tags */}
                 <select
@@ -111,25 +79,6 @@ export default function WorksheetList() {
                         </option>
                     ))}
                 </select>
-            </div>
-
-            {/* Name pattern. */}
-            <div className="flex items-center gap-2">
-                <label htmlFor="search-pattern" className="text-gray-700">
-                    Worksheet Name:
-                </label>
-                <input
-                    id="search-pattern"
-                    type="text"
-                    className="border border-gray-300 rounded px-2 py-1 text-gray-700 w-1/2 mb-4"
-                    placeholder="Enter a filter for the dashboard name"
-                    value={tempSearch}
-                    onChange={(e) => setTempSearch(e.target.value)}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter') handleSearchUpdate(); // Update on Enter
-                    }}
-                    onBlur={handleSearchUpdate} // Update on Blur
-                />
             </div>
 
             {metadataData && metadataData.length > 0 ? (
@@ -159,7 +108,7 @@ export default function WorksheetList() {
                     </table>
                 </div>
             ) : (
-                <p className="text-gray-500 text-center">No dashboards found</p>
+                <p className="text-gray-500 text-center">No worksheets found</p>
             )}
         </div>
     )
