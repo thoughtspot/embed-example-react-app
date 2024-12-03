@@ -5,10 +5,10 @@
 }
 
 .navlink:hover {
-  color: orange;
+  color: rgb(238, 0, 0);
   font-weight: bold;
 }
 
 .navlink:active {
-  color: orange;
+  color: rgb(238, 0, 0);
 }

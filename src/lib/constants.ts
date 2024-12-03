@@ -3,6 +3,8 @@ export const constants = {
   tsURL: "https://embed-1-do-not-delete.thoughtspotstaging.cloud",
   username: "",
   password: "",
+  appTopTitle: "My App",
+  appTopIconUrl: "/images/ts.png"
 };
 
 // CSS files to choose from.  These are pointing to files hosted on GitHub via jsDelivr.

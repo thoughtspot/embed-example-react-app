@@ -37,6 +37,29 @@ export default function ThoughtSpotEmbed({
       customCss = {};
     }
 
+    customCss = {
+      variables: {
+       "--ts-var-button--primary-background": "black",
+       "--ts-var-button--primary-color": "white",
+       "--ts-var-button--primary--hover-background": "#EE0000",
+       "--ts-var-button--secondary-background": "black",
+       "--ts-var-button--secondary-color": "white",
+       "--ts-var-button--secondary--hover-background": "#EE0000", 
+     
+       }
+      }
+    /*
+    * Replace any desired text
+    */
+    const stringsCustom = {
+      "Go": "Search",
+      "Liveboard": "Dashboard",
+      "Spotter": "Data Chat",
+      //"your AI analyst": " "
+    }
+
+    const iconUrl = "https://cdn.jsdelivr.net/gh/bryanthowell-ts/bryanthowell-ts.github.io/icon_6.svg";
+
     // TODO - add a basic init
     const ee = init({
       thoughtSpotHost: constants.tsURL,
@@ -52,10 +75,9 @@ export default function ThoughtSpotEmbed({
           customCSS: customCss,
         },
         content: {
-          strings: {
-            Go: "Search",
-          },
+          strings: stringsCustom
         },
+        iconSpriteUrl: iconUrl
       },
     });
 

@@ -32,7 +32,7 @@ const Dashboard = ({ params }: Props) => {
         liveboardId={dashboardId}
         showLiveboardTitle={true}
         showLiveboardDescription={true}
-        visibleActions={[]}
+        //visibleActions={[]}
       />
     )) || <div>No dashboard ID set.</div>
   );
