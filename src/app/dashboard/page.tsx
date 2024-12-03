@@ -2,7 +2,6 @@
 
 import {useEffect, useState} from "react";
 import Link from 'next/link';
-import {ListGroup} from 'flowbite-react';
 
 import {createConfiguration, ServerConfiguration, ThoughtSpotRestApi} from "@thoughtspot/rest-api-sdk";
 
@@ -16,15 +15,11 @@ const config = createConfiguration({
 export default function DashboardList() {
     const [metadataData, setMetadataData] = useState<object | null>();
     const [showMyItems, setShowMyItems] = useState(false);
-    const [selectedTag, setSelectedTag] = useState('');
-    const [tags, setTags] = useState([]);
     const [authorName, setAuthorName] = useState('');
-    const [searchPattern, setSearchPattern] = useState(''); // Main state for search
-    const [tempSearch, setTempSearch] = useState(''); // Temporary state for the input box
 
     const api = new ThoughtSpotRestApi(config);
 
-    const fetchMetadata = async (metadataOptions) => {
+    const fetchLiveboards = async (metadataOptions) => {
         return await api.searchMetadata(metadataOptions);
     }
 
@@ -34,21 +29,8 @@ export default function DashboardList() {
         setAuthorName(userInfo.name);
     }
 
-    const fetchTags = async () => {
-        console.log('setting tags');
-        const tagResults = await api.searchTags({});
-        setTags(tagResults.map((item) => item.name));
-    }
-
-    // Update main search pattern state
-    const handleSearchUpdate = () => {
-        console.log('setting search pattern to ' + tempSearch);
-        setSearchPattern(tempSearch);
-    };
-
     useEffect(() => {
         fetchUserName().then();
-        fetchTags().then();
 
         const metadataOptions = {
             record_size: -1,
@@ -63,17 +45,10 @@ export default function DashboardList() {
         if (showMyItems) {
             metadataOptions['created_by_user_identifiers'] = [authorName];
         }
-        if (selectedTag) {
-            metadataOptions['tag_identifiers'] = [selectedTag];
-        }
-        if (searchPattern) {
-            metadataOptions['metadata'][0]['name_pattern'] = searchPattern;
-        }
 
         const fetchFilteredData = async () => {
             try {
-                const filteredMetadata = await fetchMetadata(metadataOptions);
-                console.log(filteredMetadata);
+                const filteredMetadata = await fetchLiveboards(metadataOptions);
                 setMetadataData(filteredMetadata);
             } catch (error) {
                 console.error('Error fetching metadata:', error);
@@ -81,7 +56,7 @@ export default function DashboardList() {
         };
 
         fetchFilteredData().then(); // Call the async function
-    }, [showMyItems, selectedTag, searchPattern]);
+    }, [showMyItems]);
 
     return (
         <div className="max-w-4xl mx-auto mt-4">
@@ -100,38 +75,6 @@ export default function DashboardList() {
                 </div>
                 
                 <div className="mb-4 flex items-center gap-4">
-                {/* Dropdown for tags */}
-                <select
-                    className="border border-gray-300 rounded px-2 py-1 text-gray-700"
-                    value={selectedTag}
-                    onChange={(e) => setSelectedTag(e.target.value)}
-                >
-                    <option value="">All tags</option>
-                    {tags.map((tag) => (
-                        <option key={tag} value={tag}>
-                            {tag}
-                        </option>
-                    ))}
-                </select>
-            </div>
-
-            {/* Name pattern. */}
-            <div className="flex items-center gap-2">
-                <label htmlFor="search-pattern" className="text-gray-700">
-                    Dashboard Name:
-                </label>
-                <input
-                    id="search-pattern"
-                    type="text"
-                    className="border border-gray-300 rounded px-2 py-1 text-gray-700 w-1/2 mb-4"
-                    placeholder="Enter a filter for the dashboard name"
-                    value={tempSearch}
-                    onChange={(e) => setTempSearch(e.target.value)}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter') handleSearchUpdate(); // Update on Enter
-                    }}
-                    onBlur={handleSearchUpdate} // Update on Blur
-                />
             </div>
 
             {metadataData && metadataData.length > 0 ? (
