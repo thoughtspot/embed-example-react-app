@@ -2,7 +2,6 @@
 
 import {useEffect, useState} from "react";
 import Link from 'next/link';
-import {ListGroup} from 'flowbite-react';
 
 import {createConfiguration, ServerConfiguration, ThoughtSpotRestApi} from "@thoughtspot/rest-api-sdk";
 
@@ -12,8 +11,7 @@ import {constants} from "@/lib/constants";
 const config = createConfiguration({
     baseServer: new ServerConfiguration(constants.tsURL, {}),
 });
-
-export default function DashboardList() {
+export default function WorksheetList() {
     const [metadataData, setMetadataData] = useState<object | null>();
     const [showMyItems, setShowMyItems] = useState(false);
     const [selectedTag, setSelectedTag] = useState('');
@@ -25,7 +23,9 @@ export default function DashboardList() {
     const api = new ThoughtSpotRestApi(config);
 
     const fetchMetadata = async (metadataOptions) => {
-        return await api.searchMetadata(metadataOptions);
+        const allTables = await api.searchMetadata(metadataOptions);
+        console.log(allTables);
+        return allTables.filter((m) => m['metadata_header']['type'] === 'WORKSHEET');
     }
 
     const fetchUserName = async () => {
@@ -55,7 +55,7 @@ export default function DashboardList() {
             include_headers: true,
             metadata: [
                 {
-                    "type": "LIVEBOARD"
+                    "type": "LOGICAL_TABLE"
                 }
             ]
         }
@@ -85,7 +85,7 @@ export default function DashboardList() {
 
     return (
         <div className="max-w-4xl mx-auto mt-4">
-            <p className="font-bold flex items-center mb-4">Please select a dashboard to view</p>
+            <p className="font-bold flex items-center mb-4">Please select a worksheet to search</p>
             <div className="mb-4 flex items-center gap-4">
                 {/* Checkbox for my items. */}
                 <label className="flex items-center gap-2">
@@ -116,7 +116,7 @@ export default function DashboardList() {
             {/* Name pattern. */}
             <div className="flex items-center gap-2">
                 <label htmlFor="search-pattern" className="text-gray-700">
-                    Dashboard Name:
+                    Worksheet Name:
                 </label>
                 <input
                     id="search-pattern"
@@ -146,7 +146,7 @@ export default function DashboardList() {
                         {metadataData.map((item) => (
                             <tr key={item.metadata_id} className="border-b border-gray-200">
                                 <td className="w-1/3 border border-gray-300 px-4 py-2 hover:underline">
-                                    <Link href={`/dashboard/${encodeURIComponent(item.metadata_id.trim())}`}>
+                                    <Link href={`/datachat/${encodeURIComponent(item.metadata_id.trim())}`}>
                                         {item.metadata_name}
                                     </Link>
                                 </td>
