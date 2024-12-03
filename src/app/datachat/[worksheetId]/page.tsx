@@ -1,10 +1,6 @@
 "use client";
 
-import {useEffect, useState} from "react";
-
-import {
-    useEmbedRef,
-} from "@thoughtspot/visual-embed-sdk/react";
+import {useEffect} from "react";
 
 import {ConversationEmbed} from "@thoughtspot/visual-embed-sdk";
 
