@@ -16,7 +16,6 @@ export function TSFooter() {
         <Footer.Link href="https://developers.thoughtspot.com/docs">
           Developer Docs
         </Footer.Link>
-        <Footer.Link href="#">User: {constants.username}</Footer.Link>
       </Footer.LinkGroup>
     </Footer>
   );
