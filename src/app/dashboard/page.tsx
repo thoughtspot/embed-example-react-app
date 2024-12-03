@@ -85,6 +85,7 @@ export default function DashboardList() {
 
     return (
         <div className="max-w-4xl mx-auto mt-4">
+            <p className="font-bold flex items-center mb-4">Please select a dashboard to view</p>
             <div className="mb-4 flex items-center gap-4">
                 {/* Checkbox for my items. */}
                 <label className="flex items-center gap-2">
@@ -115,7 +116,7 @@ export default function DashboardList() {
             {/* Name pattern. */}
             <div className="flex items-center gap-2">
                 <label htmlFor="search-pattern" className="text-gray-700">
-                    Name pattern:
+                    Dashboard Name:
                 </label>
                 <input
                     id="search-pattern"
