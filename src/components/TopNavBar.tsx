@@ -7,6 +7,8 @@ import {useStyle} from "../contexts/StyleContext";
 
 import styles from "./TopNavBar.module.css";
 
+import {constants} from "@/lib/constants";
+
 interface NavBarProps {
 }
 
@@ -16,9 +18,9 @@ export function TopNavBar(props: NavBarProps) {
     return (
         <Navbar fluid className="bg-black text-white">
             <Navbar.Brand as={Link} href="/#">
-                <img src="/images/ts.png" className="mr-3 h-6 sm:h-9" alt="TSE Logo"/>
+                <img src={constants.appTopIconUrl} className="mr-3 h-6 sm:h-9" alt="TSE Logo"/>
                 <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
-          TSE Advanced
+          {constants.appTopTitle}
         </span>
             </Navbar.Brand>
             <Navbar.Toggle/>

@@ -97,7 +97,9 @@ export default function DashboardList() {
                     />
                     <span className="text-gray-700">Show my items</span>
                 </label>
-
+                </div>
+                
+                <div className="mb-4 flex items-center gap-4">
                 {/* Dropdown for tags */}
                 <select
                     className="border border-gray-300 rounded px-2 py-1 text-gray-700"
