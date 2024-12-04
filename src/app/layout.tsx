@@ -18,7 +18,7 @@ export default function RootLayout({
         <html lang="en">
         <head>
             <meta charSet="utf-8"/>
-            <title>TSE Advanced</title>
+            <title>TSE In Action</title>
             <link rel="icon" href="/images/ts.png" type="images/png"/>
         </head>
         <body>
