@@ -7,6 +7,10 @@ import {createConfiguration, ServerConfiguration, ThoughtSpotRestApi} from "@tho
 
 import {constants} from "@/lib/constants";
 
+/*
+* Menu page to list available Datasources (Worksheets + Models) to launch into Spotter embed page
+*/
+
 // API configuration using no auth.
 const config = createConfiguration({
     baseServer: new ServerConfiguration(constants.tsURL, {}),

@@ -19,20 +19,21 @@ export default function ThoughtSpotEmbed({
     const tsInitialize = () => {
         console.log("Initializing ThoughtSpot SDK");
 
-        let customCss: customCssInterface;
+        // let customCss: customCssInterface;
 
-        customCss = {
+        // Inline CSS customization for ThoughtSpot Components: https://developers.thoughtspot.com/docs/custom-css
+        let customCss = {
             variables: {
                 "--ts-var-button--primary-background": "black",
                 "--ts-var-button--primary-color": "white",
-                "--ts-var-button--primary--hover-background": "#EE0000",
+                "--ts-var-button--primary--hover-background": constants.primaryColorCode,
                 "--ts-var-button--secondary-background": "black",
                 "--ts-var-button--secondary-color": "white",
-                "--ts-var-button--secondary--hover-background": "#EE0000",
+                "--ts-var-button--secondary--hover-background": constants.primaryColorCode,
             }
         }
         /*
-        * Replace any desired text
+        * Replace any desired text: https://developers.thoughtspot.com/docs/customize-text
         */
         const stringsCustom = {
             "Go": "Search",
@@ -40,9 +41,12 @@ export default function ThoughtSpotEmbed({
             "Spotter": "Data Chat",
             //"your AI analyst": " "
         }
-
+        
+        // SVG Icon sprite replacement: https://developers.thoughtspot.com/docs/customize-icons
         const iconUrl = "https://cdn.jsdelivr.net/gh/bryanthowell-ts/bryanthowell-ts.github.io/icon_6.svg";
 
+        // init() function defines basic configuration and auth for all ThoughtSpot embed components
+        // https://developers.thoughtspot.com/docs/Interface_EmbedConfig for all configurations
         const ee = init({
             thoughtSpotHost: constants.tsURL,
             authType: AuthType.None,
@@ -62,6 +66,7 @@ export default function ThoughtSpotEmbed({
             },
         } as EmbedConfig);
 
+        // Checks for Auth process completed as expected
         if (ee) {
             ee.on(AuthStatus.SUCCESS, () => {
                 console.log("Success");
