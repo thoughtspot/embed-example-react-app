@@ -21,17 +21,17 @@ export default function DashboardList() {
     const [showMyItems, setShowMyItems] = useState(false);
     const [authorName, setAuthorName] = useState('');
 
-    // Use ThoughtSpot REST API SDK 
-    const api = new ThoughtSpotRestApi(config);
+    // Use ThoughtSpot REST API SDK  
+
 
     // Wrapper function around api.searchMetadata() 
     const fetchLiveboards = async (metadataOptions) => {
-        return await api.searchMetadata(metadataOptions);
+        
     }
 
     // Wrapper function to retrieve current username from around api.getCurrentUserInfo() 
     const fetchUserName = async () => {
-        const userInfo = await api.getCurrentUserInfo();
+        
         console.log('user === ' + userInfo.name);
         setAuthorName(userInfo.name);
     }
@@ -39,7 +39,7 @@ export default function DashboardList() {
     // Interactions with systems outside of React app get wrapped in useEffect
     useEffect(() => {
         // Run necessary REST API calls before rendering the menu
-        fetchUserName().then();
+        
 
         // Define the options for the metadata/search call
         const metadataOptions = {
@@ -112,7 +112,7 @@ export default function DashboardList() {
                                 </td>
                                 {/* Add description from metadata to the second column */}
                                 <td className="w-1/3 border border-gray-300 px-4 py-2">
-                                    {item.metadata_header.description || ''}
+                                   
                                 </td>
                             </tr>
                         ))}
