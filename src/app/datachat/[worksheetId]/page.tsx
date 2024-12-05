@@ -10,6 +10,10 @@ interface Props {
     params: { worksheetId: string };
 }
 
+/*
+* Display page for ConversationEmbed, receiving the worksheetId variable from the URL
+*/
+
 const DataChat = ({params}: Props) => {
 
     useEffect(() => {

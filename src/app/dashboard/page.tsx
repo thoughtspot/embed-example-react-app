@@ -3,6 +3,10 @@
 import {useEffect, useState} from "react";
 import Link from 'next/link';
 
+/*
+* Menu page to list available Liveboards to link to LiveboardEmbed display page
+*/
+
 import {createConfiguration, ServerConfiguration, ThoughtSpotRestApi} from "@thoughtspot/rest-api-sdk";
 
 import {constants} from "@/lib/constants";
@@ -17,21 +21,27 @@ export default function DashboardList() {
     const [showMyItems, setShowMyItems] = useState(false);
     const [authorName, setAuthorName] = useState('');
 
+    // Use ThoughtSpot REST API SDK 
     const api = new ThoughtSpotRestApi(config);
 
+    // Wrapper function around api.searchMetadata() 
     const fetchLiveboards = async (metadataOptions) => {
         return await api.searchMetadata(metadataOptions);
     }
 
+    // Wrapper function to retrieve current username from around api.getCurrentUserInfo() 
     const fetchUserName = async () => {
         const userInfo = await api.getCurrentUserInfo();
         console.log('user === ' + userInfo.name);
         setAuthorName(userInfo.name);
     }
 
+    // Interactions with systems outside of React app get wrapped in useEffect()
     useEffect(() => {
+        // Run necessary REST API calls before rendering the menu
         fetchUserName().then();
 
+        // Define the options for the metadata/search call
         const metadataOptions = {
             record_size: -1,
             include_headers: true,
@@ -58,11 +68,13 @@ export default function DashboardList() {
         fetchFilteredData().then(); // Call the async function
     }, [showMyItems]);
 
+    // Return the actual page after the API response has been retrieved
     return (
         <div className="max-w-4xl mx-auto mt-4">
             <p className="font-bold flex items-center mb-4">Please select a dashboard to view</p>
             <div className="mb-4 flex items-center gap-4">
-                {/* Checkbox for my items. */}
+
+                {/* Checkbox for My Items filter */}
                 <label className="flex items-center gap-2">
                     <input
                         type="checkbox"
@@ -77,6 +89,7 @@ export default function DashboardList() {
                 <div className="mb-4 flex items-center gap-4">
             </div>
 
+            {/* Create the menu using the retrieved metadata REST API data */}
             {metadataData && metadataData.length > 0 ? (
 
                 <div className="h-[65vh] overflow-auto border border-gray-200 rounded-lg">
@@ -88,13 +101,16 @@ export default function DashboardList() {
                         </tr>
                         </thead>
                         <tbody>
+                        {/* Build each row of the menu */}
                         {metadataData.map((item) => (
                             <tr key={item.metadata_id} className="border-b border-gray-200">
                                 <td className="w-1/3 border border-gray-300 px-4 py-2 hover:underline">
+                                    {/* Build the Link to the /dashboard/[dashboardId] routes */}
                                     <Link href={`/dashboard/${encodeURIComponent(item.metadata_id.trim())}`}>
                                         {item.metadata_name}
                                     </Link>
                                 </td>
+                                {/* Add description from metadata to the second column */}
                                 <td className="w-1/3 border border-gray-300 px-4 py-2">
                                     {item.metadata_header.description || ''}
                                 </td>

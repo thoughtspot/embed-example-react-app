@@ -4,7 +4,9 @@ export const constants = {
   username: "",
   password: "",
   appTopTitle: "My App",
-  appTopIconUrl: "/images/ts.png"
+  appTopIconUrl: "/images/ts.png",
+  primaryColorCode: "rgb(0, 0 , 0)",
+  secondaryColorCode: "rgb(255, 255, 255)"
 };
 
 // CSS files to choose from.  These are pointing to files hosted on GitHub via jsDelivr.
