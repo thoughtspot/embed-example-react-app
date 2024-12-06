@@ -30,7 +30,7 @@ export default function ThoughtSpotEmbed({
                 "--ts-var-button--secondary-background": "black",
                 "--ts-var-button--secondary-color": "white",
                 "--ts-var-button--secondary--hover-background": constants.primaryColorCode,
-                "--ts-var-root-font-family": "Web Font"
+               // "--ts-var-root-font-family": "Web Font"
             },
             rules_UNSTABLE: {
                 '/* ff-400 */ @font-face': {
@@ -40,6 +40,7 @@ export default function ThoughtSpotEmbed({
                     'font-display': 'swap',
                     'src': "url(https://cdn.cdn.net/web-font.woff2) format('woff2')"
                 }
+                
               }
             }
         /*
@@ -53,7 +54,7 @@ export default function ThoughtSpotEmbed({
         }
         
         // SVG Icon sprite replacement: https://developers.thoughtspot.com/docs/customize-icons
-        const iconUrl = "https://cdn.jsdelivr.net/gh/bryanthowell-ts/bryanthowell-ts.github.io/icon_6.svg";
+        const iconUrl = "";
 
         // init() function defines basic configuration and auth for all ThoughtSpot embed components
         // https://developers.thoughtspot.com/docs/Interface_EmbedConfig for all configurations
