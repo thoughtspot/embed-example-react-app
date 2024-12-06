@@ -30,8 +30,18 @@ export default function ThoughtSpotEmbed({
                 "--ts-var-button--secondary-background": "black",
                 "--ts-var-button--secondary-color": "white",
                 "--ts-var-button--secondary--hover-background": constants.primaryColorCode,
+                "--ts-var-root-font-family": "Web Font"
+            },
+            rules_UNSTABLE: {
+                '/* ff-400 */ @font-face': {
+                    'font-family': 'Web Font',
+                    'font-style': 'normal',
+                    'font-weight': '400',
+                    'font-display': 'swap',
+                    'src': "url(https://cdn.cdn.net/web-font.woff2) format('woff2')"
+                }
+              }
             }
-        }
         /*
         * Replace any desired text: https://developers.thoughtspot.com/docs/customize-text
         */
