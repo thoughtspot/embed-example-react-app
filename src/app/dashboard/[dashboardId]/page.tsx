@@ -7,11 +7,12 @@ import { useEffect, useState } from "react";
 */
 
 import {
+  Action,
   LiveboardEmbed,
   useEmbedRef,
 } from "@thoughtspot/visual-embed-sdk/react";
 
-// Defines the expectation of the dashbaordId variable from the URL
+// Defines the expectation of the dashboardId variable from the URL
 interface Props {
   params: { dashboardId: string };
 }
@@ -28,6 +29,7 @@ const Dashboard = ({ params }: Props) => {
     }
   }, [params.dashboardId]); // Only runs when dashboardId changes
 
+  // Required for referencing the LiveboardEmbed that is created in other code
   const embedRef = useEmbedRef<typeof LiveboardEmbed>();
 
   return (
@@ -39,7 +41,7 @@ const Dashboard = ({ params }: Props) => {
         liveboardId={dashboardId}
         showLiveboardTitle={true}
         showLiveboardDescription={true}
-        //visibleActions={[]}
+        //visibleActions={[Action.Save]}
       />
     
     )) || <div>No dashboard ID set.</div>
