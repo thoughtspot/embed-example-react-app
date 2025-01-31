@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 
 import {ConversationEmbed} from "@thoughtspot/visual-embed-sdk";
 
-import {createConfiguration, ServerConfiguration, ThoughtSpotRestApi} from "@thoughtspot/rest-api-sdk";
+import {createConfiguration, ServerConfiguration, ThoughtSpotRestApi, User} from "@thoughtspot/rest-api-sdk";
 
 import {constants} from "@/lib/constants";
 
@@ -25,7 +25,8 @@ const config = createConfiguration({
 */
 
 const UserDataEntitlements = ({params}: Props) => {
-    const [userData, setUserData] = useState<object | null>();
+    const [userDataResults, setUserDataResults] = useState<object | null>();
+    const [userData, setUserData] = useState<User | null>();
 
     useEffect(() => {
         const api = new ThoughtSpotRestApi(config);
@@ -48,30 +49,103 @@ const UserDataEntitlements = ({params}: Props) => {
             try {
                 const filteredUserData = await fetchUsers(userOptions);
                 console.log(filteredUserData);
-                setUserData(filteredUserData);
+                setUserDataResults(filteredUserData);
+                return filteredUserData;
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
             
         }
         // Actually make the call
-        fetchFilteredData().then();
+        fetchFilteredData().then((u)=>{
+            // Grab the single result and place into state
+            if (u != undefined && u.length > 0){
+                setUserData(u[0]);
+            }
+        });
+
+        
+
 
     }, [params.userId]); // Only runs when worksheetId changes
+
+    const groupItems = userData?.user_groups?.map((g) =>
+        <li key={g.id}>
+          <input
+                        type="checkbox"
+                        className="h-4 w-4 text-blue-600 border-gray-300 rounded"
+                        checked={true}
+                        //onChange={}
+                    />
+            &nbsp; {g.name} 
+        </li>
+      );
+
+      const privItems = userData?.privileges?.map((p) =>
+        <li key={p}>
+          <input
+                        type="checkbox"
+                        className="h-4 w-4 text-blue-600 border-gray-300 rounded"
+                        checked={true}
+                        //onChange={}
+                    />
+            &nbsp; {p} 
+        </li>
+      );
+
+      const orgItems = userData?.orgs?.map((o) =>
+        <li key={o.id}>
+          <input
+                        type="checkbox"
+                        className="h-4 w-4 text-blue-600 border-gray-300 rounded"
+                        checked={true}
+                        //onChange={}
+                    />
+            &nbsp; {o.name} 
+        </li>
+      );
+
+
 
     return (
         //<DivWithId id="embed" className="w-full"/>
         <div className="max-w-4xl mx-auto mt-4">
             <p className="font-bold flex items-center mb-4">Inspecting: {params.userId}</p>
 
-            {userData && userData.length > 0 ? (
+            {userData ? (
             <div className="mb-4 gap-4">
-                <p>{userData[0].name}</p>
-                <p>{userData[0].display_name}</p>
-                <p>{userData[0].email}</p>
+                <p>Name: {userData.name}</p>
+                <p>Display Name: {userData.display_name}</p>
+                <p>E-mail: {userData.email}</p>
                {/*<p>{userData[0].access_control_properties}</p>
                 <p>{userData[0].user_parameters}</p>--> */}
-            </div> 
+                <div className="mb-4 gap-4">
+                    <h1>Groups</h1>
+                    <ul>
+                        {userData?.user_groups?.map((g) =>
+        <li key={g.id}>
+          <input
+                        type="checkbox"
+                        className="h-4 w-4 text-blue-600 border-gray-300 rounded"
+                        //checked={true}
+                        //onChange={}
+                    />
+            &nbsp; {g.name} 
+        </li>
+      )}
+                    </ul>
+                    <h1>Privileges</h1>
+                    <ul>
+                        {privItems}
+                    </ul>
+                    <h1>Orgs</h1>
+                    <ul>
+                        {orgItems}
+                    </ul>
+                </div> 
+            </div>
+
+
             ): (
                 <p className="text-gray-500 text-center">No user details found</p>
             )}
