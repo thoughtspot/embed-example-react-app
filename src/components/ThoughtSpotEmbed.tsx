@@ -54,7 +54,7 @@ export default function ThoughtSpotEmbed({
         }
         
         // SVG Icon sprite replacement: https://developers.thoughtspot.com/docs/customize-icons
-        const iconUrl = "";
+        const iconUrl = "https://cdn.jsdelivr.net/gh/thoughtspot/custom-css-demo/icon-override1.svg";
 
         // init() function defines basic configuration and auth for all ThoughtSpot embed components
         // https://developers.thoughtspot.com/docs/Interface_EmbedConfig for all configurations
