@@ -45,7 +45,11 @@ export default function WorksheetList() {
                 {
                     "type": "LOGICAL_TABLE"
                 }
-            ]
+            ],
+            sort_options: {
+                "field_name": "MODIFIED",
+                "order": "DESC"
+              }
         }
 
         if (selectedTag) {

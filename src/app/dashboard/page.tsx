@@ -49,7 +49,11 @@ export default function DashboardList() {
                 {
                     "type": "LIVEBOARD"
                 }
-            ]
+            ],
+            sort_options: {
+                "field_name": "MODIFIED",
+                "order": "DESC"
+              }
         }
 
         if (showMyItems) {
