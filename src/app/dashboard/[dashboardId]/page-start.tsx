@@ -33,7 +33,7 @@ const Dashboard = ({ params }: Props) => {
   return (
     (dashboardId && (
       // ThoughtSpot LiveboardEmbed component with config properties. See https://developers.thoughtspot.com/docs/Interface_LiveboardViewConfig
-     
+     <></>
     )) || <div>No dashboard ID set.</div>
   );
 };
