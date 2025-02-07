@@ -28,6 +28,9 @@ export function TopNavBar(props: NavBarProps) {
                 <Navbar.Link className={styles.navlink} href="/datachat">
                     Data Chat
                 </Navbar.Link>
+                <Navbar.Link className={styles.navlink} href="/report">
+                    Reports
+                </Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     );
