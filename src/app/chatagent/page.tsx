@@ -10,7 +10,7 @@ const DataWizard = () => {
     const [prompt, setPrompt] = useState("");
     const resultsRef = useRef<HTMLDivElement | null>(null);
 
-    const chatWorksheetID = "4d98d3f5-5c6a-44eb-82fb-d529ca20e31f";
+    const chatWorksheetID = "cd252e5c-b552-49a8-821d-3eadaa049cca";
     const responseHeight = "400px";
 
     const conversation = useMemo(() => {
