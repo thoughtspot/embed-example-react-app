@@ -6,6 +6,7 @@ import {TopNavBar} from "@/components/TopNavBar";
 import {TSFooter} from "@/components/TSFooter";
 
 import ThoughtSpotEmbed from "@/components/ThoughtSpotEmbed";
+import { TopNavBarDropdown } from "@/components/TopNavBarDropdown";
 
 export default function RootLayout({
                                        children,

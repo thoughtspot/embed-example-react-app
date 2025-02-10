@@ -21,7 +21,8 @@ const DataChat = ({params}: Props) => {
         const embedDiv = document.getElementById('embed');
 
         const embed = new ConversationEmbed(embedDiv, {
-            worksheetId: params.worksheetId
+            worksheetId: params.worksheetId,
+            hideSourceSelection: true
         });
 
         embed.render().then();
