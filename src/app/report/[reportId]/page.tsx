@@ -37,12 +37,13 @@ const Dashboard = ({ params }: Props) => {
         className="full-height"
         ref={embedRef}
         answerId={reportId}
+        dataPanelV2={true}
         //showLiveboardTitle={true}
         //showLiveboardDescription={true}
         //visibleActions={[]}
       />
     
-    )) || <div>No dashboard ID set.</div>
+    )) || <div>No report ID set.</div>
   );
 };
 
