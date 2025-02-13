@@ -1,16 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import {Dropdown, Navbar} from "flowbite-react";
+import {Dropdown, Navbar, Button} from "flowbite-react";
 
 import styles from "./TopNavBar.module.css";
 
 import {constants} from "@/lib/constants";
 
+import { useState } from "react";
+
 interface NavBarProps {
+    drawerOpen: boolean,
+    setDrawerOpen: Function
 }
 
+
+
 export function TopNavBar(props: NavBarProps) {
+    const drawerClick = (e){
+        if (props.drawerOpen === false){
+            
+        }
+    }
 
     return (
         <Navbar fluid className="bg-black text-white">
@@ -31,6 +42,7 @@ export function TopNavBar(props: NavBarProps) {
                 <Navbar.Link className={styles.navlink} href="/report">
                     Reports
                 </Navbar.Link>
+                <Button onClick={drawerClick}>Show contact form</Button>
             </Navbar.Collapse>
         </Navbar>
     );
