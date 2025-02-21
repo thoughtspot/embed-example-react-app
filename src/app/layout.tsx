@@ -17,9 +17,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     console.log("Rendering RootLayout");
-    const [isOpen, setIsOpen] = useState(true);
-
+    
+    // Right Side Drawer allows for placing stored information from click events
+    const [isOpen, setIsOpen] = useState(false);
+    const [drawerItems, setDrawerItems] = useState(['Item 1', 'Item 2']);
     const handleClose = () => setIsOpen(false);
+
+    const clearDrawer = () => {
+        setDrawerItems([]);
+    }
 
 
     return (
@@ -35,9 +41,21 @@ export default function RootLayout({
             <ThoughtSpotEmbed>
                 <div className="embeddedContent">{children}</div>
             </ThoughtSpotEmbed>
+
+            { /* Drawer is for stashing items from onclick events */}
             <Drawer open={isOpen} onClose={handleClose} position="right">
                 <Drawer.Header title="My Selections" />
+                <Drawer.Items>
+                    <ul>
+                    {drawerItems.map((item) => (
+                        <li>{item}</li>
+                    ))}
+                    </ul>
+                    <div>&nbsp;</div>
+                    <Button onClick={clearDrawer}>Clear List</Button>
+                </Drawer.Items>
             </Drawer>
+            
             <TSFooter/>
         </>
         </body>

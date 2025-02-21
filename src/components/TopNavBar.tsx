@@ -16,10 +16,13 @@ interface NavBarProps {
 
 
 
-export function TopNavBar(props: NavBarProps) {
-    const drawerClick = (e){
-        if (props.drawerOpen === false){
-            
+export function TopNavBar({drawerOpen, setDrawerOpen}: NavBarProps) {
+    const drawerClick = () => {
+        if (drawerOpen === false){
+            setDrawerOpen(true);
+        }
+        else {
+            setDrawerOpen(false);
         }
     }
 
@@ -42,7 +45,7 @@ export function TopNavBar(props: NavBarProps) {
                 <Navbar.Link className={styles.navlink} href="/report">
                     Reports
                 </Navbar.Link>
-                <Button onClick={drawerClick}>Show contact form</Button>
+                <Button onClick={drawerClick}>Open</Button>
             </Navbar.Collapse>
         </Navbar>
     );
