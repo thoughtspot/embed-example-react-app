@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+
+
 /*
 * Display page for any Liveboard, receiving the dashboardId variable from the URL
 */
@@ -18,6 +20,10 @@ interface Props {
 
 const Dashboard = ({ params }: Props) => {
   const [dashboardId, setDashboardId] = useState("");
+
+  const recordVizPointClick = (e) => {
+    console.log(e);
+  }
 
   // Interactions with systems outside of React app get wrapped in useEffect()
   useEffect(() => {
@@ -40,6 +46,7 @@ const Dashboard = ({ params }: Props) => {
         showLiveboardTitle={true}
         showLiveboardDescription={true}
         //visibleActions={[]}
+        onVizPointClick={recordVizPointClick}
       />
     
     )) || <div>No dashboard ID set.</div>
