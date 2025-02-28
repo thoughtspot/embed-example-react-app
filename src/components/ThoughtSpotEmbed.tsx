@@ -30,15 +30,24 @@ export default function ThoughtSpotEmbed({
                 "--ts-var-button--secondary-background": "black",
                 "--ts-var-button--secondary-color": "white",
                 "--ts-var-button--secondary--hover-background": constants.primaryColorCode,
-               // "--ts-var-root-font-family": "Web Font"
+                "--ts-var-button-border-radius": "0px",
+               "--ts-var-root-font-family": "Madimi One"
             },
             rules_UNSTABLE: {
                 '/* ff-400 */ @font-face': {
-                    'font-family': 'Web Font',
+                    'font-family': 'Madimi One',
                     'font-style': 'normal',
                     'font-weight': '400',
                     'font-display': 'swap',
-                    'src': "url(https://cdn.cdn.net/web-font.woff2) format('woff2')"
+                    'src': "url(https://fonts.gstatic.com/s/madimione/v1/2V0YKIEADpA8U6RygDnZVFMiB6PPZ2Q.woff2) format('woff2')"
+                },
+                // Table Headers
+                ".ag-theme-alpine" : {
+                    "font-family": 'Madimi One!important'
+                },
+                // Table Cells
+                ".ag-cell": {
+                    "font-family": "Madimi One!important"
                 }
                 
               }
@@ -49,12 +58,12 @@ export default function ThoughtSpotEmbed({
         const stringsCustom = {
             "Go": "Search",
             "Liveboard": "Dashboard",
-            "Spotter": "Data Chat",
+            "Spotter": "AI Analyst",
             //"your AI analyst": " "
         }
         
         // SVG Icon sprite replacement: https://developers.thoughtspot.com/docs/customize-icons
-        const iconUrl = "";
+        const iconUrl = "https://cdn.jsdelivr.net/gh/thoughtspot/custom-css-demo/alternate-spotter-icon.svg";
 
         // init() function defines basic configuration and auth for all ThoughtSpot embed components
         // https://developers.thoughtspot.com/docs/Interface_EmbedConfig for all configurations
