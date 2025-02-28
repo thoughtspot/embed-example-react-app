@@ -31,7 +31,9 @@ export default function ThoughtSpotEmbed({
                 "--ts-var-button--secondary-color": "white",
                 "--ts-var-button--secondary--hover-background": constants.primaryColorCode,
                 "--ts-var-button-border-radius": "0px",
-               "--ts-var-root-font-family": "Madimi One"
+                "--ts-var-root-font-family": "Madimi One",
+                "--ts-var-viz-border-radius": "0px",
+                "--ts-var-root-background": "rgb(112,128,144)"
             },
             rules_UNSTABLE: {
                 '/* ff-400 */ @font-face': {
