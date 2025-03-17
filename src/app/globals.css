@@ -48,7 +48,7 @@ div[data-testid="tsEmbed"] {
 .embeddedContent {
   padding: 0;
   height: 85vh;
-  width: 100vw;
+  width: 85vw;
   display: flex;
   flex-direction: row;
 }

@@ -5,8 +5,10 @@ import "./globals.css";
 import {TopNavBar} from "@/components/TopNavBar";
 import {TSFooter} from "@/components/TSFooter";
 
+
 import ThoughtSpotEmbed from "@/components/ThoughtSpotEmbed";
 import { TopNavBarDropdown } from "@/components/TopNavBarDropdown";
+import { LeftSidebar } from "@/components/LeftSidebar";
 
 import { Button, Drawer} from "flowbite-react";
 import { useState } from "react";
@@ -38,9 +40,14 @@ export default function RootLayout({
         <body>
         <>
             <TopNavBar drawerOpen={isOpen} setDrawerOpen={(b: boolean) => setIsOpen(b)}/>
-            <ThoughtSpotEmbed>
-                <div className="embeddedContent">{children}</div>
-            </ThoughtSpotEmbed>
+                <div className="flex w-full">
+                <LeftSidebar>
+                </LeftSidebar>
+                <ThoughtSpotEmbed>
+                    <div className="embeddedContent">{children}</div>
+                </ThoughtSpotEmbed>
+                </div>
+                
 
             { /* Drawer is for stashing items from onclick events */}
             <Drawer open={isOpen} onClose={handleClose} position="right">
