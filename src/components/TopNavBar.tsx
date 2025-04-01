@@ -26,6 +26,15 @@ export function TopNavBar({drawerOpen, setDrawerOpen}: NavBarProps) {
         }
     }
 
+    let selectedItemDrawer;
+    if (constants.selectedItemDrawerEnabled){
+        selectedItemDrawer = <Button onClick={drawerClick}>My Items</Button>
+    }
+    else {
+        selectedItemDrawer = "";
+    }
+
+
     return (
         <Navbar fluid className="bg-black text-white">
             <Navbar.Brand as={Link} href="/#">
@@ -35,6 +44,7 @@ export function TopNavBar({drawerOpen, setDrawerOpen}: NavBarProps) {
                 </span>
             </Navbar.Brand>
             <Navbar.Toggle/>
+            
             {constants.leftSideMenuEnabled === false ? (
                 <Navbar.Collapse>
                     <Navbar.Link className={styles.navlink} href="/dashboard">
@@ -46,11 +56,20 @@ export function TopNavBar({drawerOpen, setDrawerOpen}: NavBarProps) {
                     <Navbar.Link className={styles.navlink} href="/report">
                         Reports
                     </Navbar.Link>
-                    <Button onClick={drawerClick}>Open</Button>
+
+                    {constants.selectedItemDrawerEnabled && 
+                    <Navbar.Link className={styles.navlink} onClick={drawerClick}>
+                        My Items
+                    </Navbar.Link>
+                    }
+
+                    
+                    
                 </Navbar.Collapse>
             ): (
+
             <Navbar.Collapse>
-                 <Button onClick={drawerClick}>My Items</Button>
+                {selectedItemDrawer}
                 <Button>Config</Button>
             </Navbar.Collapse> )
         }

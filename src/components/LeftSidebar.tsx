@@ -23,10 +23,10 @@ export function LeftSidebar(props: SidebarProps) {
                         </Link>
                     </SidebarItem>
                     <SidebarItem>
-                        Main Feature 1
+                        App Capability 1
                     </SidebarItem>
                     <SidebarItem>
-                        Main Feature 2
+                        App Capability 2
                     </SidebarItem>
                 </Sidebar.ItemGroup>
 
@@ -38,9 +38,10 @@ export function LeftSidebar(props: SidebarProps) {
                     </SidebarItem>
                 </Sidebar.ItemGroup>
 
-                <SidebarItemGroup>
-
-                <Sidebar.Collapse label="Dashboards">
+                {/* Use REST API to generate left side menu, or default to simple links */}
+                {constants.leftSideMenuRestApi === true ? (
+                    <SidebarItemGroup>
+                    <Sidebar.Collapse label="Dashboards">
                         <Sidebar.Item href="#">Products</Sidebar.Item>
                         <Sidebar.Item href="#">Sales</Sidebar.Item>
                         <Sidebar.Item>
@@ -58,7 +59,24 @@ export function LeftSidebar(props: SidebarProps) {
                             </Link>
                         </Sidebar.Item>
                     </Sidebar.Collapse>
-                </SidebarItemGroup>
+                    </SidebarItemGroup>
+                ):
+                (
+                <SidebarItemGroup>
+                    <Sidebar.Item>
+                        <Link href="/dashboard">
+                            Dashboards
+                        </Link>
+                    </Sidebar.Item>
+                    <Sidebar.Item href="">
+                        <Link href="/report">
+                            Reports
+                        </Link>
+                    </Sidebar.Item>
+            </SidebarItemGroup>
+            )
+}
+                
 
             </SidebarItems>
         </Sidebar>

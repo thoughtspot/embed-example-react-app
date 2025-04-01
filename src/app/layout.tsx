@@ -43,7 +43,9 @@ export default function RootLayout({
             <TopNavBar drawerOpen={isOpen} setDrawerOpen={(b: boolean) => setIsOpen(b)}/>
 
             <div className="flex w-full">
-                <LeftSidebar></LeftSidebar>
+                {constants.leftSideMenuEnabled && 
+                    <LeftSidebar></LeftSidebar>
+                }
                 
                 <ThoughtSpotEmbed>
                     <div className="embeddedContent">{children}</div>
