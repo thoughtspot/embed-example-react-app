@@ -10,7 +10,7 @@ export const constants = {
   // App features
   leftSideMenuEnabled: true,
   leftSideMenuRestApi: false,
-  selectedItemDrawerEnabled: true
+  selectedItemDrawerEnabled: false
 };
 
 // CSS files to choose from.  These are pointing to files hosted on GitHub via jsDelivr.
