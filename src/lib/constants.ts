@@ -6,7 +6,8 @@ export const constants = {
   appTopTitle: "My App",
   appTopIconUrl: "/images/ts.png",
   primaryColorCode: "rgb(0, 0 , 0)",
-  secondaryColorCode: "rgb(255, 255, 255)"
+  secondaryColorCode: "rgb(255, 255, 255)",
+  leftSideMenuEnabled: true
 };
 
 // CSS files to choose from.  These are pointing to files hosted on GitHub via jsDelivr.
