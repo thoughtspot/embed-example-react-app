@@ -1,6 +1,7 @@
 "use client";
 
 import "./globals.css";
+import {constants} from "@/lib/constants";
 
 import {TopNavBar} from "@/components/TopNavBar";
 import {TSFooter} from "@/components/TSFooter";
@@ -40,13 +41,14 @@ export default function RootLayout({
         <body>
         <>
             <TopNavBar drawerOpen={isOpen} setDrawerOpen={(b: boolean) => setIsOpen(b)}/>
-                <div className="flex w-full">
-                <LeftSidebar>
-                </LeftSidebar>
+
+            <div className="flex w-full">
+                <LeftSidebar></LeftSidebar>
+                
                 <ThoughtSpotEmbed>
                     <div className="embeddedContent">{children}</div>
                 </ThoughtSpotEmbed>
-                </div>
+            </div>
                 
 
             { /* Drawer is for stashing items from onclick events */}

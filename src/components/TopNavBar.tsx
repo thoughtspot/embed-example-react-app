@@ -48,7 +48,11 @@ export function TopNavBar({drawerOpen, setDrawerOpen}: NavBarProps) {
                     </Navbar.Link>
                     <Button onClick={drawerClick}>Open</Button>
                 </Navbar.Collapse>
-            ): (<Navbar.Collapse><Button>Config</Button></Navbar.Collapse> )
+            ): (
+            <Navbar.Collapse>
+                 <Button onClick={drawerClick}>My Items</Button>
+                <Button>Config</Button>
+            </Navbar.Collapse> )
         }
         </Navbar>
     );
