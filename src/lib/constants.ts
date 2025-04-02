@@ -7,6 +7,12 @@ export const constants = {
   appTopIconUrl: "/images/ts.png",
   primaryColorCode: "rgb(0, 0 , 0)",
   secondaryColorCode: "rgb(255, 255, 255)",
+
+  // Component Names
+  liveboardName: "Dashboard",
+  answerName: "Report",
+  spotterName: "Data Chat",
+
   // App features
   leftSideMenuEnabled: true,
   leftSideMenuRestApi: false,

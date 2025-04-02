@@ -48,13 +48,13 @@ export function TopNavBar({drawerOpen, setDrawerOpen}: NavBarProps) {
             {constants.leftSideMenuEnabled === false ? (
                 <Navbar.Collapse>
                     <Navbar.Link className={styles.navlink} href="/dashboard">
-                        Dashboards
+                        {constants.liveboardName}s
                     </Navbar.Link>
                     <Navbar.Link className={styles.navlink} href="/datachat">
-                        Data Chat
+                        {constants.spotterName}
                     </Navbar.Link>
                     <Navbar.Link className={styles.navlink} href="/report">
-                        Reports
+                        {constants.answerName}s
                     </Navbar.Link>
 
                     {constants.selectedItemDrawerEnabled && 
@@ -63,8 +63,7 @@ export function TopNavBar({drawerOpen, setDrawerOpen}: NavBarProps) {
                     </Navbar.Link>
                     }
 
-                    
-                    
+        
                 </Navbar.Collapse>
             ): (
 
