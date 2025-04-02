@@ -70,7 +70,6 @@ export function TopNavBar({drawerOpen, setDrawerOpen}: NavBarProps) {
 
             <Navbar.Collapse>
                 {selectedItemDrawer}
-                <Button>Config</Button>
             </Navbar.Collapse> )
         }
         </Navbar>

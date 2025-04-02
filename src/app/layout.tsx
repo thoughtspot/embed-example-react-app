@@ -43,6 +43,7 @@ export default function RootLayout({
             <TopNavBar drawerOpen={isOpen} setDrawerOpen={(b: boolean) => setIsOpen(b)}/>
 
             <div className="flex w-full">
+                
                 {constants.leftSideMenuEnabled && 
                     <LeftSidebar></LeftSidebar>
                 }
