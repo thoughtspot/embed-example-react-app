@@ -20,25 +20,43 @@ export default function ThoughtSpotEmbed({
         console.log("Initializing ThoughtSpot SDK");
 
         // let customCss: customCssInterface;
+        let customFontName = "Madimi One";
+        let customFontUrl = 'https://fonts.gstatic.com/s/madimione/v1/2V0YKIEADpA8U6RygDnZVFMiB6PPZ2Q.woff2';
 
         // Inline CSS customization for ThoughtSpot Components: https://developers.thoughtspot.com/docs/custom-css
         let customCss = {
             variables: {
+                "--ts-var-root-font-family": customFontName,
+                "--ts-var-root-background": "rgb(112,128,144)",
+                "--ts-var-viz-border-radius": "0px",
+
+                "--ts-var-button-border-radius": "0px",
                 "--ts-var-button--primary-background": "black",
                 "--ts-var-button--primary-color": "white",
                 "--ts-var-button--primary--hover-background": constants.primaryColorCode,
+
                 "--ts-var-button--secondary-background": "black",
                 "--ts-var-button--secondary-color": "white",
                 "--ts-var-button--secondary--hover-background": constants.primaryColorCode,
-               // "--ts-var-root-font-family": "Web Font"
+
+                
             },
             rules_UNSTABLE: {
+                // Must configure ThoughtSpot instance CSP font-src to allow https://fonts.gstatic.com
                 '/* ff-400 */ @font-face': {
-                    'font-family': 'Web Font',
+                    'font-family': customFontName,
                     'font-style': 'normal',
                     'font-weight': '400',
                     'font-display': 'swap',
-                    'src': "url(https://cdn.cdn.net/web-font.woff2) format('woff2')"
+                    'src': "url(" + customFontUrl + ") format('woff2')"
+                },
+                // Table Headers
+                ".ag-theme-alpine" : {
+                    "font-family": `{customFontName}!important`
+                },
+                // Table Cells
+                ".ag-cell": {
+                    "font-family": `{customFontName}!important`
                 }
                 
               }
@@ -49,12 +67,12 @@ export default function ThoughtSpotEmbed({
         const stringsCustom = {
             "Go": "Search",
             "Liveboard": "Dashboard",
-            "Spotter": "Data Chat",
+            "Spotter": "AI Analyst",
             //"your AI analyst": " "
         }
         
         // SVG Icon sprite replacement: https://developers.thoughtspot.com/docs/customize-icons
-        const iconUrl = "";
+        const iconUrl = "https://cdn.jsdelivr.net/gh/thoughtspot/custom-css-demo/alternate-spotter-icon.svg";
 
         // init() function defines basic configuration and auth for all ThoughtSpot embed components
         // https://developers.thoughtspot.com/docs/Interface_EmbedConfig for all configurations
