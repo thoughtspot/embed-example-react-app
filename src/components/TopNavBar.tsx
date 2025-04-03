@@ -38,7 +38,11 @@ export function TopNavBar({drawerOpen, setDrawerOpen}: NavBarProps) {
     return (
         <Navbar fluid className="bg-black text-white">
             <Navbar.Brand as={Link} href="/#">
-                <img src={constants.appTopIconUrl} className="mr-3 h-6 sm:h-9" alt="TSE Logo"/>
+
+                {constants.appIcon &&
+                    <img src={constants.appTopIconUrl} className="mr-3 h-6 sm:h-9" alt="TSE Logo"/>
+                }
+                
                 <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
                     {constants.appTopTitle}
                 </span>

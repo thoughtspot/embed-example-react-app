@@ -30,6 +30,15 @@ export default function RootLayout({
         setDrawerItems([]);
     }
 
+    // Sidebar mode needs different styling in the main content area then just top bar
+    let embeddedContentClass;
+    if(constants.leftSideMenuEnabled){
+        embeddedContentClass = 'embeddedContentSidebarWidth';
+    }
+    else {
+        embeddedContentClass = 'embeddedContentFullWidth';
+    }
+
 
     return (
         <html lang="en">
@@ -49,7 +58,7 @@ export default function RootLayout({
                 }
                 
                 <ThoughtSpotEmbed>
-                    <div className="embeddedContent">{children}</div>
+                    <div className={embeddedContentClass}>{children}</div>
                 </ThoughtSpotEmbed>
             </div>
                 
