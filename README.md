@@ -1,10 +1,10 @@
-# TSE Advanced Tutorial Next
+# ThoughtSpot React Components Example Embedded App
 
 This repository contains the code for an example React.js/Next.js application that embeds ThoughtSpot.
 
 ## Requirements
 
-For this exmple, you will need the following:
+For this example, you will need the following:
 
 - (optional) `git` command line if using the `git clone` download. See the [Git Clone Section](#git-clone)
 - `npm`, aka Node Package Manager. This code has been testing on 10.8.3+, but any modern version should work.
