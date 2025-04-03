@@ -47,12 +47,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 To change the port (perhaps to 8000), you can update the `package.json` file, under the scripts section. The `"dev"` portion can be updated with `"dev": "next dev -p {port number}"` and then the `npm run dev` command will always load with the port you chose. The overall block will look like:
 
-  "scripts": {
-    "dev": "next dev -p 8000",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+    "scripts": {
+      "dev": "next dev -p 8000",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
 
 ## Adjusting CORS and CSP settings in ThoughtSpot
 ThoughtSpot must be configured properly to allow embedding into another application, including localhost. The [Security Settings](https://developers.thoughtspot.com/docs/security-settings#_add_domains_to_csp_and_cors_allowlists) section of the Developer Portal has a page for configuring most of these (you may need to be in the Primary Org and choose "All Orgs" for certain instance-wide settings).
