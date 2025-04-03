@@ -112,8 +112,8 @@ export default function ThoughtSpotEmbed({
     tsInitialize();
 
     return (
-        <div className="w-full h-full">
-            <div className="w-full h-full" id="ts-embed">
+        <div className="h-full">
+            <div className="h-full" id="ts-embed">
                 {children}
             </div>
         </div>
