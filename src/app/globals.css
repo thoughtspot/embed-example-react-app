@@ -45,10 +45,19 @@ div[data-testid="tsEmbed"] {
 }
 
 /* Used for the central embedded content where TS is embedded. */
-.embeddedContent {
+.embeddedContentFullWidth {
   padding: 0;
   height: 85vh;
   width: 100vw;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Used for the central embedded content where TS is embedded. */
+.embeddedContentSidebarWidth {
+  padding: 0;
+  height: 85vh;
+  width: 85vw;
   display: flex;
   flex-direction: row;
 }
