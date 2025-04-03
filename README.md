@@ -1,6 +1,8 @@
 # ThoughtSpot React Components Example Embedded App
 
-This repository contains the code for an example React.js/Next.js application that embeds ThoughtSpot.
+This repository contains the code for an example React.js/Next.js application that embeds ThoughtSpot. You can use the app as a functioning, easily restyled demo of an app embedding ThoughtSpot or as a basic pattern for implementing ThoughtSpot React components in your own existing React app.
+
+The basic aspects of the app are covered in the [React Components Tutorial](https://developers.thoughtspot.com/docs/tutorials/react-components/intro), but there are additional components and capabilities beyond those covered in the tutorial.
 
 ## Requirements
 
@@ -11,7 +13,7 @@ For this example, you will need the following:
 - An IDE such as [VS Code](https://code.visualstudio.com/), [PyCharm](https://www.jetbrains.com/pycharm/) or similar
   that supports React apps.
 
-## Setting up for training
+## Setting up the app
 
 First you need to download the code. There are two approaches, you can clone the code using `git clone` or you can
 download the code. `git clone` is recommended, but both approaches work.
@@ -22,13 +24,10 @@ This approach requires you to have git installed on your computer. From the comm
 `git clone https://github.com/thoughtspot/embed-example-react-app`. You should see messages like the following and a
 new folder, called `embed-example-react-app` will be created.
 
-![Git clone](docs/git-clone.png)
-
 ### Download code
 
 Alternatively, you can download the code from GitHub using the UI.
 
-![Download repo](docs/git-download.png)
 
 This will download a file called `embed-example-react-app-main.zip`. Unzip the file and you get a directory
 called `embed-example-react-app-main`.
@@ -39,17 +38,15 @@ Now that you've downloaded the code from GitHub, you need to install dependencie
 on your download option. Then run `npm install`. You may see some warnings, but can typically ignore those. You will get
 a message like the following once the installation is complete:
 
-![NPM install](docs/npm-install.png)
 
 ## Starting the application
 
 Finally, run `npm run dev`. You should see a message saying the server has started.
 
-![NPM run dev](docs/npm-run-dev.png)
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the starting page.
 
-![Application home page](docs/home-page.png)
+To 
+
 
 ## Technical links
 
