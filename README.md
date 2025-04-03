@@ -54,6 +54,16 @@ To change the port (perhaps to 8000), you can update the `package.json` file, un
     "lint": "next lint"
   },
 
+## Adjusting CORS and CSP settings in ThoughtSpot
+ThoughtSpot must be configured properly to allow embedding into another application, including localhost. The [Security Settings](https://developers.thoughtspot.com/docs/security-settings#_add_domains_to_csp_and_cors_allowlists) section of the Developer Portal has a page for configuring most of these (you may need to be in the Primary Org and choose "All Orgs" for certain instance-wide settings).
+
+Add "http://localhost:3000" to any CSP settings, while "localhost:3000" is the syntax in CORS. Additional resources have their own CSP settings sections. 
+
+For Google Fonts, use set CSP font-src domains to include 
+"https://fonts.googleapis.com" (or your own CDN with a woff2 file)
+
+For SVG image overrides, set CSP img-src domains to include "https://cdn.jsdelivr.net" (or wherever else you are hosting)
+
 
 ## Technical links
 
