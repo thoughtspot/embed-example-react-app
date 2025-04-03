@@ -1,7 +1,7 @@
 // TODO -  Get the username and password from the user (optional)
 export const constants = {
 
-  tsURL: "{myts}.thoughtspot.cloud",
+  tsURL: "https://embed-1-do-not-delete.thoughtspotstaging.cloud",
   username: "",
   password: "",
 
