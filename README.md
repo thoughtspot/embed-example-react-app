@@ -45,7 +45,14 @@ Finally, run `npm run dev`. You should see a message saying the server has start
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the starting page.
 
-To 
+To change the port (perhaps to 8000), you can update the `package.json` file, under the scripts section. The `"dev"` portion can be updated with `"dev": "next dev -p {port number}"` and then the `npm run dev` command will always load with the port you chose. The overall block will look like:
+
+  "scripts": {
+    "dev": "next dev -p 8000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
 
 
 ## Technical links
