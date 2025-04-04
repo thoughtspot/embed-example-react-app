@@ -11,7 +11,7 @@ interface SidebarProps {
 }
 
 // Left side menu is near standard in web apps
-export function LeftSidebar(props: SidebarProps) {
+export function LeftSidebarRestApi(props: SidebarProps) {
 
     return (
         <Sidebar className="bg-gray h-screen">
@@ -43,16 +43,24 @@ export function LeftSidebar(props: SidebarProps) {
                 </Sidebar.ItemGroup>
 
                 <SidebarItemGroup>
+                <Sidebar.Collapse label="Dashboards">
+                    <Sidebar.Item href="#">Products</Sidebar.Item>
+                    <Sidebar.Item href="#">Sales</Sidebar.Item>
                     <Sidebar.Item>
                         <Link href="/dashboard">
-                            {constants.liveboardName}s
+                            -- See All --
                         </Link>
                     </Sidebar.Item>
+                </Sidebar.Collapse>
+                <Sidebar.Collapse label="Reports">
+                    <Sidebar.Item href="#">Products</Sidebar.Item>
+                    <Sidebar.Item href="#">Sales</Sidebar.Item>
                     <Sidebar.Item href="">
                         <Link href="/report">
-                            {constants.answerName}s
+                            -- See All --
                         </Link>
                     </Sidebar.Item>
+                </Sidebar.Collapse>
                 </SidebarItemGroup>
 
                 

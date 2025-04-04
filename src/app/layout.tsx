@@ -10,6 +10,7 @@ import {TSFooter} from "@/components/TSFooter";
 import ThoughtSpotEmbed from "@/components/ThoughtSpotEmbed";
 import { TopNavBarDropdown } from "@/components/TopNavBarDropdown";
 import { LeftSidebar } from "@/components/LeftSidebar";
+import { LeftSidebarRestApi } from "@/components/LeftSidebarRestApi";
 
 import { Button, Drawer} from "flowbite-react";
 import { useState } from "react";
@@ -53,10 +54,15 @@ export default function RootLayout({
 
             <div className="flex w-full">
                 
-                {constants.leftSideMenuEnabled && 
-                    <LeftSidebar></LeftSidebar>
+                { /* Left Side bar can be filled by REST API request or be simpler hardcoded component */}
+                {constants.leftSideMenuEnabled && constants.leftSideMenuRestApi &&
+                    (<LeftSidebarRestApi></LeftSidebarRestApi>)
+                }
+                {constants.leftSideMenuEnabled && !constants.leftSideMenuRestApi &&
+                    (<LeftSidebar></LeftSidebar>)
                 }
                 
+                { /* ThoughtSpotEmbed component initializes SDK properly, other pages load within as children */}
                 <ThoughtSpotEmbed>
                     <div className={embeddedContentClass}>{children}</div>
                 </ThoughtSpotEmbed>

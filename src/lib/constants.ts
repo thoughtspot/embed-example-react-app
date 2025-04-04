@@ -7,7 +7,7 @@ export const constants = {
 
   // App features
   appIcon: true,
-  leftSideMenuEnabled: false,
+  leftSideMenuEnabled: true,
   leftSideMenuRestApi: false,
   selectedItemDrawerEnabled: false,
 
