@@ -79,10 +79,9 @@ export default function ThoughtSpotEmbed({
         const ee = init({
             thoughtSpotHost: constants.tsURL,
             authType: AuthType.None,
-            username: constants.username,
-            getAuthToken: () => {
+            /*getAuthToken: () => {
                 return getAuthToken(constants.username);
-            },
+            },*/
             callPrefetch: true,
             customizations: {
                 style: {

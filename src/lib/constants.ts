@@ -1,13 +1,13 @@
 // TODO -  Get the username and password from the user (optional)
 export const constants = {
 
-  tsURL: "{myts}.thoughtspot.cloud",
+  tsURL: "https://{myts}.thoughtspot.cloud",
   username: "",
   password: "",
 
   // App features
   appIcon: true,
-  leftSideMenuEnabled: false,
+  leftSideMenuEnabled: true,
   leftSideMenuRestApi: false,
   selectedItemDrawerEnabled: false,
 

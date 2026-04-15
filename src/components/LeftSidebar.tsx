@@ -18,11 +18,7 @@ export function LeftSidebar(props: SidebarProps) {
             <SidebarItems className="bg-gray">
             {/* First section is to simulate whatever the app itself might do */}
                 <Sidebar.ItemGroup>
-                    <SidebarItem>
-                        <Link href="/">
-                            Home
-                        </Link>
-                    </SidebarItem>
+                    <SidebarItem href="/">Home</SidebarItem>
                 </Sidebar.ItemGroup>
                 <Sidebar.ItemGroup>
                     <SidebarItem>
@@ -35,32 +31,24 @@ export function LeftSidebar(props: SidebarProps) {
 
                 {/* Second section is link to Spotter capabilities */}
                 <Sidebar.ItemGroup>
-                    <SidebarItem>
-                        <Link href="/datachat">
-                            {constants.spotterName} 
-                        </Link>
-                    </SidebarItem>
+                    <SidebarItem href="/datachat">{constants.spotterName}</SidebarItem>
                 </Sidebar.ItemGroup>
 
                 {/* Use REST API to generate menu items for Liveboards or Answers, or default to simple links to their menu pages */}
                 {constants.leftSideMenuRestApi === true ? (
                     <SidebarItemGroup>
                     <Sidebar.Collapse label="Dashboards">
-                        <Sidebar.Item href="#">Products</Sidebar.Item>
-                        <Sidebar.Item href="#">Sales</Sidebar.Item>
-                        <Sidebar.Item>
-                            <Link href="/dashboard">
+                        <Sidebar.Item>Products</Sidebar.Item>
+                        <Sidebar.Item>Sales</Sidebar.Item>
+                        <Sidebar.Item href="/dashboard">
                                 -- See All --
-                            </Link>
                         </Sidebar.Item>
                     </Sidebar.Collapse>
                     <Sidebar.Collapse label="Reports">
-                        <Sidebar.Item href="#">Products</Sidebar.Item>
-                        <Sidebar.Item href="#">Sales</Sidebar.Item>
-                        <Sidebar.Item href="">
-                            <Link href="/report">
+                        <Sidebar.Item>Products</Sidebar.Item>
+                        <Sidebar.Item>Sales</Sidebar.Item>
+                        <Sidebar.Item href="/report">
                                 -- See All --
-                            </Link>
                         </Sidebar.Item>
                     </Sidebar.Collapse>
                     </SidebarItemGroup>
@@ -68,16 +56,8 @@ export function LeftSidebar(props: SidebarProps) {
 
                 (
                     <SidebarItemGroup>
-                        <Sidebar.Item>
-                            <Link href="/dashboard">
-                                {constants.liveboardName}s
-                            </Link>
-                        </Sidebar.Item>
-                        <Sidebar.Item href="">
-                            <Link href="/report">
-                                {constants.answerName}s
-                            </Link>
-                        </Sidebar.Item>
+                        <Sidebar.Item href="/dashboard">{constants.liveboardName}s</Sidebar.Item>
+                        <Sidebar.Item href="/report">{constants.answerName}s</Sidebar.Item>
                     </SidebarItemGroup>
                 )
                 }
